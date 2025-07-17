@@ -1,38 +1,37 @@
 import PostCard from "@/components/postcard/postCard";
 import styles from "./blog.module.css";
+import { headers } from "next/headers";
+import { postCardType } from "@/types/postcard.types";
 // import { getPosts } from "@/lib/data";
 
-// FETCH DATA WITH AN API
-// const getData = async () => {
-//   const res = await fetch("http://localhost:3000/api/blog", {next:{revalidate:3600}});
 
-//   if (!res.ok) {
-//     throw new Error("Something went wrong");
-//   }
+export const metadata = {
+  title: "Blogs list",
+  description:"All the blogs of BoomBlog are listed here."
+}
 
-//   return res.json();
-// };
+const getData = async ()=>{
+  const headerList = await headers()
+  
+  const host = headerList.get("host")
+  const protocol = (process.env.NODE_ENV=="development"?"http":"https");
+  
+  const res = await fetch(`${protocol}://${host}/api/blog`);
+
+  const data = await res.json()
+  return data;
+}
 
 const BlogPage = async () => {
-
-  // FETCH DATA WITH AN API
-  // const posts = await getData();
-
-  // FETCH DATA WITHOUT AN API
-  // const posts = await getPosts();
-
+  const posts = await getData();
+  
   return (
     <div className={styles.container}>
-      {/* {posts.map((post) => (
-        <div className={styles.post} key={post.id}>
+      {posts.map((post:postCardType) => (
+        <div className={styles.post} key={post._id}>
           <PostCard post={post} />
         </div>
-      ))} */}
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
+      ))}
     </div>
   );
 };

@@ -6,8 +6,12 @@ import Navbar from "@/components/nabar/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Dynamically generating title and description for every page
 export const metadata: Metadata = {
-  title: "Blog Site",
+  title: {
+    default: "BoomBlog",
+    template: "%s | BoomBlog",
+  },
   description: "A Full Stack Blog Web Application.",
   authors: [{ name: "Pradeep Tarakar" }],
 };

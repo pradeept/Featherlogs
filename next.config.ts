@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns:[
       {
         protocol:"https",
-        hostname:"jsonplaceholder.typicode.com"
+        hostname:"images.pexels.com"
       }
     ]
   }

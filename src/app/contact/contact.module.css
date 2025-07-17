@@ -1,12 +1,14 @@
 .container {
   display: flex;
   align-items: center;
-  gap: 100px;
+  gap: 80px;
+  margin-top: 16px;
+
 }
 
 .imgContainer {
   flex: 1;
-  height: 500px;
+  height: 400px;
   position: relative;
 }
 

@@ -6,4 +6,5 @@ export type postCardType = {
     title: string;
     body: string;
     slug:number;
+    _id:string;
 }
