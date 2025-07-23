@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ["latin"] });
 // Dynamically generating title and description for every page
 export const metadata: Metadata = {
   title: {
-    default: "BoomBlog",
-    template: "%s | BoomBlog",
+    default: "Featherlogs",
+    template: "%s | Featherlogs",
   },
   description: "A Full Stack Blog Web Application.",
   authors: [{ name: "Pradeep Tarakar" }],
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <div className='container'>
+        <div className='container' >
           <Navbar />
           {children}
           <Footer />

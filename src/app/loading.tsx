@@ -1,8 +1,9 @@
 import React from 'react'
+import Loading from '@/utility/Loading'
 
 function loading() {
   return (
-    <div>loading</div>
+    <Loading />
   )
 }
 

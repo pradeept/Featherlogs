@@ -1,19 +1,23 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./home.module.css";
+import * as motion from "motion/react-client";
+import { fadeInProps } from "@/utility/fadeIn";
+import {  slideInProps } from "@/utility/slideIn";
+import Link from "next/link";
 
 function Home() {
   return (
     <div className={styles.container}>
-      <div className={styles.textContainer}>
+      <motion.div {...fadeInProps} className={styles.textContainer}>
         <h1 className={styles.title}>Creative Thoughts Agency.</h1>
         <p className={styles.desc}>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
           blanditiis adipisci minima reiciendis a autem assumenda dolore.
         </p>
         <div className={styles.buttons}>
-          <button className={styles.button}>Learn More</button>
-          <button className={styles.button}>Contact</button>
+        <Link className={styles.button} href={"/about"}>Learn More</Link>
+        <Link className={styles.button} href={"/contact"}>Contact</Link>
         </div>
         <div className={styles.brands}>
           <Image
@@ -23,10 +27,10 @@ function Home() {
             className={styles.brandImg}
           />
         </div>
-      </div>
-      <div className={styles.imgContainer}>
-        <Image src='/hero.gif' alt='hero-gif' fill className={styles.heroImg} />
-      </div>
+      </motion.div>
+      <motion.div {...slideInProps} className={styles.imgContainer}>
+        <Image src='/hero.gif' unoptimized alt='hero-gif' fill className={styles.heroImg} />
+      </motion.div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
-// "use client";
 import Image from "next/image";
 import styles from "./contact.module.css";
+import * as motion from "motion/react-client"
+import { slideInProps } from "@/utility/slideIn";
 // import dynamic from "next/dynamic";
 // import HydrationTest from "@/components/hydrationTest";
 
@@ -18,10 +19,10 @@ function ContactPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.imgContainer}>
+      <motion.div {...slideInProps} className={styles.imgContainer}>
         <Image src='/contact.png' alt='' fill className={styles.img} />
-      </div>
-      <div className={styles.formContainer}>
+      </motion.div>
+      <motion.div {...slideInProps} className={styles.formContainer}>
         {/* <HydrationTestNoSSR/> */}
         {/* <div suppressHydrationWarning>{a}</div> */}
         <form action='' className={styles.form}>
@@ -31,13 +32,13 @@ function ContactPage() {
           <textarea
             name=''
             id=''
-            cols='30'
-            rows='10'
+            cols={30}
+            rows={10}
             placeholder='Message'
           ></textarea>
           <button>Send</button>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 }

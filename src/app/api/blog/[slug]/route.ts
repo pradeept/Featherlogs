@@ -4,8 +4,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 // NOTE: Either we can define DB logic here or make a separate file like controller in /lib
 // Get a post
-export const GET = async (request:NextRequest, { params }:{params:{slug:string}}) => {
-  const { slug } =  await params;
+export const GET = async (
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string }> }
+) => {
+  const { slug } = await params;
 
   try {
     connectToDB();
@@ -19,7 +22,10 @@ export const GET = async (request:NextRequest, { params }:{params:{slug:string}}
 };
 
 // Delete a post - used in Admin Mode
-export const DELETE = async (request:NextRequest, { params }:{params:{slug:string}}) => {
+export const DELETE = async (
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string }> }
+) => {
   const { slug } = await params;
 
   try {

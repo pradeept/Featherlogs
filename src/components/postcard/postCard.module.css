@@ -16,6 +16,7 @@
 }
 
 .img{
+  border-radius: 1rem;
   object-fit: cover;
 }
 
@@ -39,5 +40,10 @@
 }
 
 .link{
+  font-size: 0.8rem;
   text-decoration: underline;
+}
+
+.link:hover{
+  color: var(--btn);
 }

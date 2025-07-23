@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./links.module.css";
 import NavLink from "./navLink/navLink";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-// import { handleLogout } from "@/lib/action";
+import { handleLogout } from "@/lib/actions";
+import { Session } from "next-auth";
 
 const links = [
   {
@@ -26,34 +27,47 @@ const links = [
   },
 ];
 
-function Links() {
+const signIn = (
+  session: Session & { user: Session["user"] & { isAdmin: boolean } | null}
+) => {
+  console.log(session);
+
+  return session?.user ? (
+    <>
+      {session.user?.isAdmin && (
+        <NavLink item={{ title: "Admin", path: "/admin" }} />
+      )}
+      <form action={handleLogout}>
+        <button className={styles.logout}>Logout</button>
+      </form>
+    </>
+  ) : (
+    <motion.div whileHover={{ scale: 1.1 }} className={styles.loginBtn}>
+      <NavLink item={{ title: "Login", path: "/login" }} />
+    </motion.div>
+  );
+};
+
+function Links({
+  session,
+}: {
+  session: Session & { user: Session["user"] & { isAdmin: boolean } | null};
+}) {
   const [open, setOpen] = useState(false);
 
-  // TEMPORARY
-  const session = {
-    user: {
-      isAdmin: true,
-    },
-  };
+  useEffect(()=>{
+    console.log("Changed session");
+  },[session])
 
   return (
     <div className={styles.container}>
       <div className={styles.links}>
         {links.map((link) => (
-          <NavLink item={link} key={link.title} />
+          <motion.div key={link.title} whileHover={{ scale: 1.1 }}>
+            <NavLink item={link} key={link.title} />
+          </motion.div>
         ))}
-        {session?.user ? (
-          <>
-            {session.user?.isAdmin && (
-              <NavLink item={{ title: "Admin", path: "/admin" }} />
-            )}
-            <form>
-              <button className={styles.logout}>Logout</button>
-            </form>
-          </>
-        ) : (
-          <NavLink item={{ title: "Login", path: "/login" }} />
-        )}
+        {signIn(session)}
       </div>
       <Image
         className={styles.menuButton}
@@ -74,6 +88,7 @@ function Links() {
             {links.map((link) => (
               <NavLink item={link} key={link.title} />
             ))}
+            {signIn(session)}
           </motion.div>
         )}
       </AnimatePresence>

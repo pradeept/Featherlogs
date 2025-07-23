@@ -2,8 +2,8 @@ import PostCard from "@/components/postcard/postCard";
 import styles from "./blog.module.css";
 import { headers } from "next/headers";
 import { postCardType } from "@/types/postcard.types";
-// import { getPosts } from "@/lib/data";
-
+import * as motion from "motion/react-client"
+import { fadeInProps } from "@/utility/fadeIn";
 
 export const metadata = {
   title: "Blogs list",
@@ -26,13 +26,13 @@ const BlogPage = async () => {
   const posts = await getData();
   
   return (
-    <div className={styles.container}>
+    <motion.div {...fadeInProps} className={styles.container}>
       {posts.map((post:postCardType) => (
         <div className={styles.post} key={post._id}>
           <PostCard post={post} />
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
