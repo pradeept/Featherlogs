@@ -1,4 +1,3 @@
-
 export const authConfig = {
   pages: {
     signIn: "/login",
@@ -13,8 +12,7 @@ export const authConfig = {
       }
       return token;
     },
-    async session({ session, token })
-    {
+    async session({ session, token }) {
       if (token) {
         session.user.id = token.id;
         session.user.isAdmin = token.isAdmin;
@@ -26,7 +24,9 @@ export const authConfig = {
       const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin");
       const isOnBlogPage = request.nextUrl?.pathname.startsWith("/blog");
       const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
-      const isOnRegisterPage = request.nextUrl?.pathname.startsWith("/register");
+      const isOnRegisterPage =
+        request.nextUrl?.pathname.startsWith("/register");
+      const isOnApi = request.nextUrl?.pathname.startsWith("/api/blog");
 
       // ONLY ADMIN CAN REACH THE ADMIN DASHBOARD
 
@@ -46,11 +46,15 @@ export const authConfig = {
         return Response.redirect(new URL("/", request.nextUrl));
       }
 
-      if (isOnRegisterPage && user){
+      if (isOnRegisterPage && user) {
         return Response.redirect(new URL("/", request.nextUrl));
       }
 
-      return true
+      if (isOnApi && !user) {
+        return Response.redirect(new URL("/", request.nextUrl));
+      }
+
+      return true;
     },
   },
 };

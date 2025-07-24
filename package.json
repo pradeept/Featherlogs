@@ -1,7 +1,8 @@
 {
-  "name": "blog-app",
+  "name": "featherlogs",
   "version": "0.1.0",
   "private": true,
+  "author": {"name": "Pradeep Tarakar"},
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
