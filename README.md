@@ -26,6 +26,7 @@ A modern Fullstack blog application built with Next.js and React.js (TypeScript)
 ## Setup ⚒️ and Run ⚙️
 
 - Install the dependencies: `npm i`
+- Build the app: `npm run build`
 - Run the next app: `npm run start`
 - create a .env.local in `/` (follow below mentioned example .env)
 - Go to http://localhost:3000/
