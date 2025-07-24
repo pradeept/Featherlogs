@@ -1,6 +1,7 @@
-# FeatherLogs
+# FeatherLogs 
+<img src="./public/featherlogsLogo.png" height="200" width="200" alt="featherlogs-logo">
 
-A full stack blog application with Admin module.
+A modern Fullstack blog application built with Next.js and React.js (TypeScript). This app provides seamless authentication, dynamic SEO metadata, and rich user experience with animations.
 
 ## Tech Stack
 
