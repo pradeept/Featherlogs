@@ -65,23 +65,24 @@
 
 .notFoundContainer {
   display: flex;
+  box-shadow: black 0px 0px 5px;
   gap: 2rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 60vh;
 }
 
 .notFoundLink {
   border: 1px;
   border-radius: 2rem;
   padding:12px;
-  background-color: black;
-  color: white;
-}
-.notFoundLink:hover {
   background-color: white;
   color: black;
+}
+.notFoundLink:hover {
+  background-color: black;
+  color: white;
 }
 
 @media (max-width: 1024px) {

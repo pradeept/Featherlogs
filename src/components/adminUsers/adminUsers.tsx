@@ -1,9 +1,9 @@
 import { getUsers } from "@/lib/data";
 import styles from "./adminUsers.module.css";
 import Image from "next/image";
-import { deleteUser } from "@/lib/actions";
 import * as motion from "motion/react-client"
 import { fadeInProps } from "@/utility/fadeIn";
+import DeleteUser from "./deleteUser";
 
 const AdminUsers = async () => {
   const users = await getUsers();
@@ -22,10 +22,7 @@ const AdminUsers = async () => {
             />
             <span>{user.username}</span>
           </div>
-          <form action={deleteUser}>
-            <input type="hidden" name="id" value={user.id} />
-            <button className={styles.userButton}>Delete</button>
-          </form>
+           <DeleteUser id={user.id} />
         </div>
       ))}
     </motion.div>

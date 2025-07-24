@@ -1,4 +1,3 @@
-import { Session } from "next-auth";
 
 export const authConfig = {
   pages: {

@@ -2,7 +2,7 @@
 
 import { signIn, signOut } from "@/lib/auth";
 import { connectToDB } from "./db";
-import {  Post, User } from "./model";
+import { Post, User } from "./model";
 import bcrypt from "bcryptjs";
 import { revalidatePath } from "next/cache";
 
@@ -28,7 +28,7 @@ export const login = async (prevState, formData: FormData) => {
       redirect: false,
     });
     return { success: true };
-  } catch (err:any) {
+  } catch (err: any) {
     console.log(err);
     console.log("Kind: ", err.kind);
 
@@ -55,24 +55,27 @@ export const register = async (prevState, formData: FormData) => {
     // Create new user
     const salt = await bcrypt.genSalt(5);
     const saltedPassword = await bcrypt.hash(password.toString(), salt);
-    const newUser = new User({ email, username, password: saltedPassword, isAdmin:true });
+    const newUser = new User({
+      email,
+      username,
+      password: saltedPassword,
+      isAdmin: true,
+    });
     await newUser.save();
-    
-    return { success: true};
+
+    return { success: true };
   } catch (e) {
     console.log(e);
     return { error: "Something went wrong. Try again later." };
   }
 };
 
-
 // ------------------------- Admin functionalities ---------------------
-
-export const addPost = async (prevState,formData) => {
-  // const title = formData.get("title");
-  // const desc = formData.get("desc");
-  // const slug = formData.get("slug");
-
+// Add a post
+/*
+  NOTE: prevState is the first parameter passed when using useActionState hook
+*/
+export const addPost = async (prevState, formData) => {
   const { title, desc, slug, userId } = Object.fromEntries(formData);
 
   try {
@@ -94,9 +97,8 @@ export const addPost = async (prevState,formData) => {
   }
 };
 
-
 // Delete a post
-export const deletePost = async (formData) => {
+export const deletePost = async (prevState, formData) => {
   const { id } = Object.fromEntries(formData);
 
   try {
@@ -112,8 +114,8 @@ export const deletePost = async (formData) => {
   }
 };
 
-// Add a user
-export const addUser = async (prevState,formData) => {
+// Add an user
+export const addUser = async (prevState, formData) => {
   const { username, email, password, img } = Object.fromEntries(formData);
 
   try {
@@ -134,8 +136,8 @@ export const addUser = async (prevState,formData) => {
   }
 };
 
-// Delete a user
-export const deleteUser = async (formData) => {
+// Delete an user
+export const deleteUser = async (prevState,formData) => {
   const { id } = Object.fromEntries(formData);
 
   try {
@@ -149,31 +151,4 @@ export const deleteUser = async (formData) => {
     console.log(err);
     return { error: "Something went wrong!" };
   }
-};
-
-
-
-
-
-
-
-
-// Add on: Use this to send Email from Contact page
-export const contactAdmin = async (prevState, formData: FormData) => {
-  // NOTE: prevState is the first parameter passed when using useActionState.
-  console.log(prevState);
-
-  const { title, desc, userId, slug } = Object.fromEntries(formData);
-  console.log(title, desc, userId, slug);
-  return { error: "Got the error while saving to DB" };
-  //   try {
-  //     await connectToDB();
-
-  //     const newPost = new Post({ title, desc, userId, slug });
-  //     await newPost.save();
-  //     console.log("Saved to DB");
-  //   } catch (err) {
-  //     console.log(err);
-  //     return {error: "Something went wrong while saving the post"};
-  //   }
 };

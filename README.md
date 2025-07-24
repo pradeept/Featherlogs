@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FeatherLogs
 
-## Getting Started
+A full stack blog application with Admin module.
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+- Next.js
+- React.js with TS
+- Nextauth
+- Mongoose
+- Motion
+- CSS modules (styles)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features ✨
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Authentication using **Credentials** and **Oauth**.
+- Protected API.
+- **Visitor**, **User** and **Author** modules.
+- Dynamically generated metadata for **SEO friendliness**.
+- **Animations** for better UX.
+- and _much more_..
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup ⚒️ and Run ⚙️
 
-## Learn More
+- Install the dependencies: `npm i`
+- Run the next app: `npm run start`
+- create a .env.local in `/` (follow below mentioned example .env)
+- Go to http://localhost:3000/
 
-To learn more about Next.js, take a look at the following resources:
+## Example ENV 🗝️
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+MONGO_URL=mongodb://<host>:27017/<dbName>
+AUTH_SECRET=<some_secret>
+AUTH_GITHUB_ID=<Get from github>
+AUTH_GITHUB_SECRET=<Get from github>
+AUTH_TRUST_HOST=http://localhost:3000
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Learnings 💡
 
-## Deploy on Vercel
+- Oauth using Nextauth.
+- API and middleware.
+- Protected routes.
+- Server actions & useActionState.
+- Caching and revalidating.
+- and _much more..._
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Folder Structure 📁
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **src**: all the routes, libs and utilities.
+- **src/app**: all the routes and API.
+- **src/components**: all the UI components.
+- **src/lib**: server actions, controller functions, DB models and connection script.
+- **src/types**: custom types.
+- **src/utility**: animation and Loading files.
+
+--- 
+### Author: [Pradeep Tarakar](https://pradeept.netlify.app).

@@ -16,7 +16,7 @@ const LoginForm = ({ session }: { session: Session | null }) => {
     if (state?.success || session) {
       router.refresh()
     }
-  }, [state, state?.success, router]);
+  }, [state, state?.success, router,session]);
 
   return (
     <>

@@ -2,10 +2,6 @@ import Image from "next/image";
 import styles from "./contact.module.css";
 import * as motion from "motion/react-client"
 import { slideInProps } from "@/utility/slideIn";
-// import dynamic from "next/dynamic";
-// import HydrationTest from "@/components/hydrationTest";
-
-// const HydrationTestNoSSR = dynamic(()=>import("@/components/hydrationTest"), {ssr: false})
 
 export const metadata = {
   title: "Contact Page",
@@ -13,9 +9,6 @@ export const metadata = {
 };
 
 function ContactPage() {
-  // const a = Math.random();
-
-  // console.log(a);
 
   return (
     <div className={styles.container}>

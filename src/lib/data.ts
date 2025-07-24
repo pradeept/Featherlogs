@@ -1,9 +1,6 @@
 import { Post, User } from "./model";
 import { connectToDB } from "./db";
-// import { unstable_noStore as noStore } from "next/cache";
 import { connection } from "next/server";
-
-
 
 // Get all posts
 export const getPosts = async () => {
