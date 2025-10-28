@@ -59,7 +59,7 @@ export const register = async (prevState, formData: FormData) => {
       email,
       username,
       password: saltedPassword,
-      isAdmin: true,
+      isAdmin: false,
     });
     await newUser.save();
 

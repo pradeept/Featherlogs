@@ -7,15 +7,10 @@ function Home() {
   return (
     <div className={styles.container}>
       <motion.div {...fadeInProps} className={styles.textContainer}>
-        <h1 style={{ fontSize: "5rem" }}>
+        <h1 style={{ fontSize: "2rem", textAlign:"center" }}>
           Welcome to FeatherLogs -{" "}
-          <span style={{ color: "#d8eb71" }}>Where Thougts Take Flight✈️</span>!
+          <span style={{ color: "#d8eb71" }}>Where Thougts Take ✈️</span>!
         </h1>
-        <p style={{ fontSize: "1.2rem", marginTop: "1rem", maxWidth: "70%" }}>
-          Discover a beautifully simple way to share your ideas, stories, and
-          insights. Featherlogs is your personal space to write freely, connect
-          with readers, and let your voice soar.
-        </p>
       </motion.div>
     </div>
   );
