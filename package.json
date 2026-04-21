@@ -2,7 +2,9 @@
   "name": "featherlogs",
   "version": "0.1.0",
   "private": true,
-  "author": {"name": "Pradeep Tarakar"},
+  "author": {
+    "name": "Pradeep Tarakar"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -14,7 +16,7 @@
     "lucide-react": "^0.525.0",
     "mongoose": "^8.16.3",
     "motion": "^12.23.5",
-    "next": "15.3.6",
+    "next": "15.3.8",
     "next-auth": "^5.0.0-beta.29",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
